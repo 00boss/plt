@@ -10,11 +10,24 @@ plt.rcParams['font.sans-serif'] = ['SimHei']
 
 # 解决中文字体下坐标轴负数的负号显示问题
 plt.rcParams['axes.unicode_minus'] = False
+#设置图片大小
+#plt.rcParams['figure.figsize'] = (10,5)
 
 #设置随机数种子
 np.random.seed(1)
 #从2021-1-1开始100天，
-data = pd.Series(np.random.randn(100),index = pd.data_range('1/1/2021',periods=100))
+data = pd.Series(np.random.randn(100),index = pd.date_range('1/1/2021',periods=100))
 #累加
 data = data.cumsum()
 data.plot()
+
+#尝试一个100行4列的矩阵
+df = pd.DataFrame(np.random.randn(100,4),index = data.index , columns=('A','B','C','D'))
+df = df.cumsum()
+df.plot()
+#指定单条数据
+df.plot(y='A')
+
+
+
+
