@@ -1,0 +1,20 @@
+import pandas as pd
+import numpy as np
+from matplotlib import pyplot as plt
+
+#设置可视化风格
+plt.style.use('tableau-colorblind10')
+
+#设置字体
+plt.rcParams['font.sans-serif'] = ['SimHei']
+
+# 解决中文字体下坐标轴负数的负号显示问题
+plt.rcParams['axes.unicode_minus'] = False
+
+#设置随机数种子
+np.random.seed(1)
+#从2021-1-1开始100天，
+data = pd.Series(np.random.randn(100),index = pd.data_range('1/1/2021',periods=100))
+#累加
+data = data.cumsum()
+data.plot()
