@@ -22,11 +22,39 @@ data = data.cumsum()
 data.plot()
 
 #尝试一个100行4列的矩阵
-df = pd.DataFrame(np.random.randn(100,4),index = data.index , columns=('A','B','C','D'))
+df = pd.DataFrame(np.random.randn(10,4),index = data.index , columns=('A','B','C','D'))
 df = df.cumsum()
 df.plot()
 #指定单条数据
 df.plot(y='A')
+#多子图
+df.plot(subplots=True)
+
+#两种图合并
+df.A.plot.bar()
+df.B.plot(color='r')
+
+#堆叠柱形图
+df.plot.bar(stacked =True)
+
+#直方图
+df.plot.hist()
+#可以通过orientation='horizontal'和 cumulative=True 绘制横向和累积直方图
+df.A.plot.hist(orientation="horizontal", cumulative=True)
+#多子图，有区别
+#df.hist(color="k", alpha=0.5, bins=50)
+df.plot.hist(subplots=True,bins=50,alpha=0.5)
+#单列直方图
+df.A.hist( bins = 20, alpha=0.5)
+df.hist('a', bins = 20, alpha=0.5)
+
+
+
+
+
+
+
+
 
 
 
